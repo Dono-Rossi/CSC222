@@ -1,17 +1,11 @@
 #include <string>
 using namespace std;
 struct Time {
-    // instance variables
     int hour, minute;
     double second;
-
-    // constructors
-    Time(int);
-    Time(int, int, double);
-    Time(double);
-
-    // modifiers
-    void increment(double);
+   
+    void print();
+    void increment(double secs);
 
     // functions
     string theString();
