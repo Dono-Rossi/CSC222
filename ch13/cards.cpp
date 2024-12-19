@@ -2,34 +2,22 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
-#include "Cards.h"
+#include "cards.h"
 using namespace std;
 
+Card::Card() {
+    suit = NONE; rank = JOKER;
+}
 
+Card::Card(Suit s, Rank r) {
+    suit = s; rank = r;
+}
 
-
-
-
-
-vector<Card> build_deck()
+std::string Card::to_string() const
 {
-    vector<Card> deck(52);
-    int i = 0;
-    for (Suit suit = CLUBS; suit <= SPADES; suit = Suit(suit+1)) {
-        for (Rank rank = TWO; rank <= ACE; rank = Rank(rank+1)) {
-            deck[i].suit = suit;
-            deck[i].rank = rank;
-            i++;
-        }
-    }
-    return deck;
-}
+    vector<string> suit_strings = {"None", "Clubs", "Diamonds", "Hearts", "Spades"};
+    vector<string> rank_strings = {"Joker", "", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
-switch(suit) {
-    case CLUBS: return "Clubs";
-    case DIAMONDS: return "Diamonds";
-    case HEARTS: return "Hearts";
-    case SPADES: return "Spades";
-    default: return "Not a valid suit";
+    if (rank == 0) return rank_strings[rank];
+    return rank_strings[rank] + " of " + suit_strings[suit];
 }
-
