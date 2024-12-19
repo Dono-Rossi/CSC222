@@ -21,3 +21,5 @@ std::string Card::to_string() const
     if (rank == 0) return rank_strings[rank];
     return rank_strings[rank] + " of " + suit_strings[suit];
 }
+
+

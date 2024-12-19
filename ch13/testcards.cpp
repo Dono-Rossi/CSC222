@@ -15,3 +15,18 @@ TEST_CASE("Test can create and render Cards") {
     CHECK(c4.to_string() == "7 of Spades");
 }
 
+TEST_CASE("Test for comparison of Cards") {
+    Card c1(HEARTS, QUEEN);
+    Card c2(HEARTS, QUEEN);
+    Card c3(SPADES, ACE);
+    Card c4(HEARTS, FIVE);
+    Card c5(HEARTS, FOUR);
+    Card c6(DIAMONDS, FOUR);
+    CHECK((c1 == c2) == true);
+    CHECK((c1 == c3) == false);
+    CHECK((c1 != c3) == true);    
+    CHECK((c1 > c5) == true);
+    CHECK((c1 <= c5) == false);
+    CHECK((c6 < c5) == true);
+    CHECK((c5 >= c6) == true);
+}
