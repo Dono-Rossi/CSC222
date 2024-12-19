@@ -17,6 +17,7 @@ struct Deck {
     Deck(int n);
 };
 
+enum Suit {NONE, CLUBS, DIAMONDS, HEARTS, SPADES};
 enum Rank {JOKER, TWO=2, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT,
            NINE, TEN, JACK, QUEEN, KING, ACE};
 // Constructor
@@ -63,3 +64,4 @@ void Deck::shuffle()
         swap_cards(i, rand_card);
     }
 }
+
