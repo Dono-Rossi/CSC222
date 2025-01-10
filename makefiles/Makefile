@@ -1,11 +1,4 @@
-all: one two three
+all: f1.o f2.o
 
-one: 
-	touch one
-two: 
-	touch two
-three:
-	touch three
-
-clean:
-	rm -f one two three
+f1.o f2.o:
+	echo $@
