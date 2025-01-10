@@ -1,5 +1,7 @@
-a := one two
-b := 'one two'
+x := dude
+
 all:
-	printf '$a'
-	printf $b
+	echo $(x)
+	echo ${x}
+
+	echo $x
