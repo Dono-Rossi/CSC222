@@ -14,4 +14,9 @@ class BigInt
 
     // member functions
     string to_string() const;
+
+
+    bool operator==(const BigInt&) const;
+    bool operator>(const BigInt&) const;
+    bool operator<(const BigInt&) const;
 };
