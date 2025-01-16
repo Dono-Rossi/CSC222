@@ -30,4 +30,9 @@ bool BigInt::operator==(const BigInt& b2) const
 {return (((!negative) ? digits : "-" + digits) == ((!b2.negative) ? b2.digits : "-" + b2.digits));
 }
 
+bool BigInt::operator>(const BigInt& b2) const{
+int bInt1 = stoi((!negative) ? digits : "-" + digits);
+int bInt2 = stoi((!b2.negative) ? digits : "-" + digits); 
+return 0;
+}
 
