@@ -31,7 +31,11 @@ bool BigInt::operator==(const BigInt& b2) const
 }
 
 bool BigInt::operator>(const BigInt& b2) const{
-   return(0);
+if (negative == true and b2.negative == false) return false;
+if ((negative == b2.negative and negative == true) and (digits > b2.digits)) return false;
+if ((negative == b2.negative and negative == true) and (digits < b2.digits)) return true;
+if (digits <= b2.digits) return false;
+    return true;
 }
 
 bool BigInt::operator<(const BigInt& b2) const{
