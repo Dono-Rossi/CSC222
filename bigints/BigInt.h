@@ -11,7 +11,8 @@ class BigInt
     BigInt();
     BigInt(int);
     BigInt(string);
-
+    
+    bool is_negative() const;
     // member functions
     string to_string() const;
 
