@@ -216,6 +216,34 @@ if(((!negative) ? digits : "-" + digits) == ((!i2.negative) ? i2.digits : "-" + 
     return BigInt(neg + subtractedCommonDigits);
 }
 
-BigInt BigInt::operator*(const BigInt& num1) const {
-return(0);
+BigInt BigInt::operator*(const BigInt& num1) const
+{
+BigInt output;
+    int n1l = digits.length();
+    int n2l = num1.digits.length();
+    int carry = 0;
+    int right = 0;
+    int tem = 0;
+    for (int i = 0; i < n1l + n2l; i++) {
+        output.digits.insert(output.digits.begin(), '0');
+    }
+    for (int i = 0; i < n2l; i++) {
+        for (int j = 0; j < n1l; j++) {
+            right = (digits[n1l - 1 - j] - '0') * (num1.digits[n2l - 1 - i] - '0') + carry;
+            carry = right / 10;
+            tem = output.digits[n1l + n2l - 1 - i - j] - '0' + right % 10;
+            output.digits[n1l + n2l - 1 - i - j] = tem % 10 + '0';
+            carry += tem / 10;
+        }
+        output.digits[n1l + n2l - 1 - n1l - i] = carry + '0';
+        carry = 0;
+    }
+    while (output.digits.length() > 1 && output.digits[0] == '0') {
+        output.digits.erase(output.digits.begin());
+    }
+    if ((negative && !num1.negative) || (!negative && num1.negative)) {
+        output.negative = true;
+    }
+    output.digits.pop_back();
+    return output;
 }
