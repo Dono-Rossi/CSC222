@@ -25,21 +25,7 @@ char digit_to_char(int digit) {
 
 string increment_digit_string(const string &digit_string)
 {
-    string digits = digit_string;
-    int pos = digits.size() - 1;
-    char next_digit = digits[pos] + 1;
-
-    while (next_digit > '9' && pos >= 0) {
-        digits[pos] = '0';
-        next_digit = digits[--pos] + 1;
-    }
-
-    if (pos >= 0)
-        digits[pos] = next_digit;
-    else
-        digits = "1" + digits;
-
-    return digits;
+return(0);
 }
 
 BigInt::BigInt(string n)

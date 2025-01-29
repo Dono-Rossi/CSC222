@@ -49,6 +49,15 @@ TEST_CASE("Test can compare BigInts for inequality") {
     CHECK((i2 <= i5) == true);
 }
 
+TEST_CASE("Test increment_digit_string helper function") {
+    CHECK(increment_digit_string("8") == "9");
+    CHECK(increment_digit_string("24") == "25");
+    CHECK(increment_digit_string("100") == "101");
+    CHECK(increment_digit_string("99") == "100");
+    CHECK(increment_digit_string("1199") == "1200");
+    CHECK(increment_digit_string("9999") == "10000");
+}
+
 TEST_CASE("Test can add BigInts") {
     BigInt i1("123");
     BigInt i2("321");
@@ -68,3 +77,4 @@ TEST_CASE("Test can multiply BigInts"){
     CHECK((i4 * i5).to_string() == "9999");
     CHECK((i1 * i2).to_string() == "39483");
 }
+
