@@ -4,6 +4,7 @@ using namespace std;
 string incrementDigitString(const string &);
 string sumCommonLenDigitStrs(const string&, const string&);
 string subtractCommonLenDigitStrs(const string&, const string&);
+string addLeadingZeros(const std::string& string, int zeros);
 
 class BigInt
 {

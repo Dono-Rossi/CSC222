@@ -87,6 +87,10 @@ string BigInt::to_string() const
     return (!negative) ? digits : "-" + digits;
 } 
 
+std::string addLeadingZeros(const std::string& num, int zeros) {
+    return std::string(zeros, '0') + num;
+}
+
 bool BigInt::operator==(const BigInt& b2) const
 {return (((!negative) ? digits : "-" + digits) == ((!b2.negative) ? b2.digits : "-" + b2.digits));
 }
@@ -210,4 +214,8 @@ if(((!negative) ? digits : "-" + digits) == ((!i2.negative) ? i2.digits : "-" + 
          fullShort);
     
     return BigInt(neg + subtractedCommonDigits);
+}
+
+BigInt BigInt::operator*(const BigInt& num1) const {
+return(0);
 }
