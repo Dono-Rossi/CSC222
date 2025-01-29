@@ -130,4 +130,7 @@ bool BigInt::operator!=(const BigInt& b2) const{
     return (((!negative) ? digits : "-" + digits) != ((!b2.negative) ? b2.digits : "-" + b2.digits));
 }
 
-
+BigInt BigInt::operator+(const BigInt& i2) const
+{
+return 0;
+}
