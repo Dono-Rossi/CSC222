@@ -132,5 +132,38 @@ bool BigInt::operator!=(const BigInt& b2) const{
 
 BigInt BigInt::operator+(const BigInt& i2) const
 {
-return 0;
+if ((*this).digits.size() == i2.digits.size()) {
+        string raw_sum = sumCommonLenDigitStrs((*this).digits, i2.digits);
+        if (raw_sum[0] == 'c')
+            return BigInt("1" + raw_sum.substr(2));
+        return BigInt(raw_sum);
+    }
+        
+    // Addends have different numbers of digits
+    const BigInt *longer;
+    const BigInt *shorter;
+    int common, extra;
+    string summedCommonDigits, leadingDigits;
+
+    if ((*this).digits.size() > i2.digits.size()) {
+        longer = this;
+        shorter = &i2;
+    } else {
+        longer = &i2;
+        shorter = this;
+    };
+
+    common = shorter->digits.size();
+    extra = longer->digits.size() - common;
+    summedCommonDigits = sumCommonLenDigitStrs(
+       shorter->digits, 
+       longer->digits.substr(extra)
+    );
+    leadingDigits = longer->digits.substr(0, extra);
+
+    if (summedCommonDigits[0] != 'c')
+        return BigInt(leadingDigits + summedCommonDigits);
+
+    return BigInt(incrementDigitString(leadingDigits) +
+                  summedCommonDigits.substr(2));
 }
