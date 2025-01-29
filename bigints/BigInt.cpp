@@ -170,5 +170,44 @@ if ((*this).digits.size() == i2.digits.size()) {
 
 BigInt BigInt::operator-(const BigInt &i2) const
 {
-return (0);
+if(((!negative) ? digits : "-" + digits) == ((!i2.negative) ? i2.digits : "-" + i2.digits)){
+        return BigInt(0);
+    }
+
+    if ((*this).digits.size() == i2.digits.size())
+    {
+        string raw_diff = subtractCommonLenDigitStrs((*this).digits, i2.digits);
+        return BigInt(raw_diff);
+    }
+
+    // Minuends have different numbers of digits
+    const BigInt *longer;
+    const BigInt *shorter;
+    int common, extra;
+    string subtractedCommonDigits, leadingDigits;
+    string neg = "";
+
+    if ((*this).digits.size() > i2.digits.size())
+    {
+        longer = this;
+        shorter = &i2;
+    }
+    else
+    {
+        longer = &i2;
+        shorter = this;
+        neg = "-";
+    };
+
+    string fullShort = shorter->digits;
+
+    while (longer->digits.size()>fullShort.size()){
+        fullShort = "0" + fullShort; 
+    }
+
+    subtractedCommonDigits = subtractCommonLenDigitStrs(
+        longer->digits,
+         fullShort);
+    
+    return BigInt(neg + subtractedCommonDigits);
 }
