@@ -50,13 +50,12 @@ TEST_CASE("Test can compare BigInts for inequality") {
 }
 
 TEST_CASE("Test increment_digit_string helper function") {
-    CHECK(increment_digit_string("8") == "9");
-    CHECK(increment_digit_string("24") == "25");
-    CHECK(increment_digit_string("100") == "101");
-    CHECK(increment_digit_string("99") == "100");
-    CHECK(increment_digit_string("1199") == "1200");
-    CHECK(increment_digit_string("9999") == "10000");
+    CHECK(incrementDigitString("8") == "9");
+    CHECK(incrementDigitString("24") == "25");
+    CHECK(incrementDigitString("100") == "101");
+    CHECK(incrementDigitString("99") == "100");
+    CHECK(incrementDigitString("1199") == "1200");
+    CHECK(incrementDigitString("9999") == "10000");
 }
-
 
 

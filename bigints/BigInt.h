@@ -1,10 +1,9 @@
 #include <string>
 using namespace std;
 
-string increment_digit_string(const string &);
-// string sum_common_len_digit_strs(const string&, const string&);
-// string subtract_common_len_digit_strs(const string&, const string&);
-// string addLeadingZeros(const std::string& string, int zeros);
+string incrementDigitString(const string &);
+string sumCommonLenDigitStrs(const string&, const string&);
+string subtractCommonLenDigitStrs(const string&, const string&);
 
 class BigInt
 {

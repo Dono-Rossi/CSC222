@@ -3,6 +3,34 @@
 #include "BigInt.h"
 using namespace std;
 
+int to_num(char c) {  
+    return c - '0';   
+}  
+
+char digit_to_char(int digit) {  
+    return digit + '0';  
+}  
+
+string incrementDigitString(const string &digitString)
+{
+    string digits = digitString;
+    int pos = digits.size() - 1;
+    char nextDigit = digits[pos] + 1;
+
+    while (nextDigit > '9' && pos >= 0) {
+        digits[pos] = '0';
+        nextDigit = digits[--pos] + 1;
+    }
+
+    if (pos >= 0)
+        digits[pos] = nextDigit;
+    else
+        digits = "1" + digits;
+
+    return digits;
+}
+
+// constructs
 BigInt::BigInt()
 {
     negative = false;
@@ -13,19 +41,6 @@ BigInt::BigInt(int i)
 {
     negative = (i >= 0) ? false : true;
     digits = (i >= 0) ? std::to_string(i) : std::to_string(-i);
-}
-
-int to_num(char c) {  
-    return c - '0';   
-}
-
-char digit_to_char(int digit) {  
-    return digit + '0';  
-}
-
-string increment_digit_string(const string &digit_string)
-{
-return(0);
 }
 
 BigInt::BigInt(string n)
