@@ -167,3 +167,8 @@ if ((*this).digits.size() == i2.digits.size()) {
     return BigInt(incrementDigitString(leadingDigits) +
                   summedCommonDigits.substr(2));
 }
+
+BigInt BigInt::operator-(const BigInt &i2) const
+{
+return (0);
+}
