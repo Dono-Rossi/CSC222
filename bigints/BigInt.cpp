@@ -30,6 +30,39 @@ string incrementDigitString(const string &digitString)
     return digits;
 }
 
+string sumCommonLenDigitStrs(const string &s1, const string &s2)
+{
+    char digitSum, carry = 0;
+    string sum = s1;
+
+    for (int i = s1.size() - 1; i >= 0; i--) {
+        digitSum = to_num(s1[i]) + to_num(s2[i]) + carry;
+        sum[i] = digit_to_char(digitSum % 10);
+        carry = digitSum > 9 ? 1 : 0;
+    }
+
+    return carry ? "c+" + sum : sum;
+} 
+
+string subtractCommonLenDigitStrs(const string &s1, const string &s2)
+{
+    char digitDiff, borrow = 0;
+    string diff = s1;
+
+    for (int i = s1.size() - 1; i >= 0; i--) {
+        digitDiff = to_num(s1[i]) - to_num(s2[i]) - borrow;
+        if (digitDiff < 0) {
+            digitDiff += 10;
+            borrow = 1;
+        } else {
+            borrow = 0;
+        }
+        diff[i] = digit_to_char(digitDiff);
+    }
+
+    return diff;
+}
+
 // constructs
 BigInt::BigInt()
 {
